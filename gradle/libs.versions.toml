@@ -1,0 +1,30 @@
+[versions]
+# Plugins
+plugin-android = "8.1.4"
+plugin-compose = "1.6.0-beta01"
+
+# Multiplatform
+kotlin = "1.9.22"
+libres = "1.2.2"
+
+# Libraries
+androidx-appcompat = "1.6.1"
+androidx-activityCompose = "1.8.2"
+
+# Android
+mindsdk = "24"
+
+[libraries]
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+plugin-android = { module = "com.android.tools.build:gradle", version.ref = "plugin-android" }
+plugin-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "plugin-compose" }
+plugin-libres = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+
+[plugins]
+android = { id = "com.android.application", version.ref = "plugin-android" }
+kotlin = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "plugin-compose" }
+libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
+cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods" }
