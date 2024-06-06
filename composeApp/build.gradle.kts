@@ -1,6 +1,7 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     id(libs.plugins.android.get().pluginId)
@@ -29,6 +30,14 @@ kotlin {
         }
     }
 
+    targets.withType<KotlinNativeTarget> {
+        binaries {
+            all {
+                linkerOpts("-lsqlite3")
+            }
+        }
+    }
+
     cocoapods {
         summary = "PlayZone iOS SDK"
         homepage = "https://google.com"
@@ -37,6 +46,9 @@ kotlin {
         framework {
             transitiveExport = false
             baseName = "SharedSDK"
+            export(project(":common:core"))
+            export(project(":common:core-root"))
+            isStatic = true
         }
     }
 
@@ -52,9 +64,17 @@ kotlin {
             implementation(compose.material)
             implementation(compose.ui)
             implementation(compose.components.resources)
+            implementation(project(":common:core-root"))
+            implementation(project(":common:core"))
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+        }
+        iosMain{
+            dependencies{
+                api(project(":common:core-root"))
+                api(project(":common:core"))
+            }
         }
     }
 }

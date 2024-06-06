@@ -1,0 +1,57 @@
+plugins{
+    id("multiplatform")
+    id(libs.plugins.sqldelight.get().pluginId)
+}
+
+sqldelight {
+    databases {
+        create("Contacts") {
+            packageName.set("org.larkes.contacts")
+            generateAsync.set(true)
+        }
+    }
+    linkSqlite = true
+}
+
+kotlin{
+    sourceSets{
+
+        commonMain{
+            dependencies{
+                api(libs.koin)
+                api(libs.kotlinx.coroutines)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.client.logging)
+            }
+        }
+
+        desktopMain{
+            dependencies{
+                implementation(libs.ktor.client.okhttp)
+                implementation(libs.sqldelight.sqlite.driver)
+            }
+        }
+
+        androidMain{
+            dependencies{
+                implementation(libs.ktor.client.android)
+                implementation(libs.sqldelight.android.driver)
+            }
+        }
+
+        iosMain{
+            dependencies{
+                implementation(libs.ktor.client.ios)
+                implementation(libs.sqldelight.native.driver)
+            }
+        }
+
+    }
+}
+
+android {
+    namespace = "org.larkes.contacts.common.core"
+}
