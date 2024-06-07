@@ -7,6 +7,9 @@ plugin-compose = "1.6.0-beta01"
 kotlin = "1.9.22"
 libres = "1.2.2"
 coroutines = "1.7.3"
+navigation = "2.7.0-alpha07"
+serialization = "1.5.1"
+
 
 # Libraries
 androidx-appcompat = "1.6.1"
@@ -25,6 +28,11 @@ plugin-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", versi
 plugin-libres = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+compose-navigation = {module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation"}
+
+plugin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 
 
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
@@ -51,3 +59,5 @@ compose = { id = "org.jetbrains.compose", version.ref = "plugin-compose" }
 libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+

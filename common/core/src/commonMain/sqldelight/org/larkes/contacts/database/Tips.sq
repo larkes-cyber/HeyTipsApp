@@ -1,0 +1,30 @@
+CREATE TABLE tipEntity (
+    id TEXT PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    imageSrc TEXT,
+    color INTEGER,
+    tags TEXT
+);
+
+fetchTips:
+SELECT *
+FROM tipEntity;
+
+insertTip:
+INSERT OR REPLACE
+INTO tipEntity(
+    id,
+    title,
+    description,
+    imageSrc,
+    color,
+    tags
+)VALUES(?,?,?,?,?,?);
+
+clearStorage:
+DELETE FROM tipEntity;
+
+deleteTip:
+DELETE FROM tipEntity
+WHERE id = ?;

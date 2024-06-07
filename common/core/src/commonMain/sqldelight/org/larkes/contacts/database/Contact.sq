@@ -1,6 +1,0 @@
-CREATE TABLE contactEntity (
-    id TEXT PRIMARY KEY NOT NULL,
-    name TEXT,
-    mobile TEXT,
-    linkedAccounts TEXT
-);

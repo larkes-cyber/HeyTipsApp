@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.plugin.compose)
     implementation(libs.plugin.libres)
     implementation(libs.plugin.sqldelight)
+    implementation(libs.plugin.serialization)
 }
 
 kotlin {

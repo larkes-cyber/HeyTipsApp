@@ -49,7 +49,7 @@ kotlin {
             export(project(":common:core"))
             export(project(":common:core-root"))
             isStatic = true
-        }
+         }
     }
 
     sourceSets {
@@ -66,6 +66,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(project(":common:core-root"))
             implementation(project(":common:core"))
+            implementation(libs.compose.navigation)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)

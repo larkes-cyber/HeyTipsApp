@@ -5,7 +5,7 @@ plugins{
 
 sqldelight {
     databases {
-        create("Contacts") {
+        create("TipsDatabase") {
             packageName.set("org.larkes.contacts")
             generateAsync.set(true)
         }
@@ -20,7 +20,7 @@ kotlin{
             dependencies{
                 api(libs.koin)
                 api(libs.kotlinx.coroutines)
-                implementation(libs.ktor.client.core)
+                api(libs.ktor.client.core)
                 implementation(libs.ktor.client.json)
                 implementation(libs.ktor.client.serialization)
                 implementation(libs.ktor.client.negotiation)
