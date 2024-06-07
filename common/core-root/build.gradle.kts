@@ -11,6 +11,7 @@ kotlin{
             dependencies{
 
                 implementation(project(":common:core"))
+                implementation(project(":common:tips:data"))
 
             }
         }

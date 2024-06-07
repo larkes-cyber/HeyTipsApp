@@ -10,6 +10,7 @@ object PlatformSDK {
                 single { configuration }
             })
             modules(coreModule)
+            modules(tipsModule)
         }.koin
         Inject.createDependencies(diTree)
     }

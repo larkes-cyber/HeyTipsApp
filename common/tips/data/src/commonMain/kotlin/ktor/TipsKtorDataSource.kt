@@ -3,6 +3,7 @@ package ktor
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
@@ -12,6 +13,7 @@ import io.ktor.http.path
 import ktor.models.AddTipRequest
 import ktor.models.AddTipResponse
 import ktor.models.DeleteTipRequest
+import ktor.models.FetchTipsQuery
 import ktor.models.TipResponse
 
 class TipsKtorDataSource(
@@ -33,10 +35,12 @@ class TipsKtorDataSource(
         return res.body()
     }
 
-    suspend fun fetchTips():List<TipResponse>{
+    suspend fun fetchTips(fetchTipsQuery: FetchTipsQuery):List<TipResponse>{
         val res = httpClient.get {
             contentType(ContentType.Application.Json)
             url{
+                parameter("offset", fetchTipsQuery.offset)
+                parameter("limit", fetchTipsQuery.limit)
                 path(FETCH_TIPS)
             }
         }

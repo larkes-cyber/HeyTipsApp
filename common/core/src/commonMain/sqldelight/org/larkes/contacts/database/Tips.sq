@@ -4,7 +4,8 @@ CREATE TABLE tipEntity (
     description TEXT NOT NULL,
     imageSrc TEXT,
     color INTEGER,
-    tags TEXT
+    tags TEXT,
+    serverId TEXT
 );
 
 fetchTips:
@@ -19,8 +20,9 @@ INTO tipEntity(
     description,
     imageSrc,
     color,
-    tags
-)VALUES(?,?,?,?,?,?);
+    tags,
+    serverId
+)VALUES(?,?,?,?,?,?,?);
 
 clearStorage:
 DELETE FROM tipEntity;
