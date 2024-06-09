@@ -1,6 +1,8 @@
 package mapper
 
 import kotlinx.serialization.json.Json
+import ktor.models.AddTipRequest
+import ktor.models.EditTipRequest
 import ktor.models.TipResponse
 import models.Tip
 import models.TipTags
@@ -51,5 +53,22 @@ fun Tip.toTipEntity(id:String):TipEntity{
         serverId = serverId,
         tags = if(tags != null) Json.encodeToString(TipTags.serializer(), tags!!) else null,
         title = title
+    )
+}
+
+fun Tip.toEditTipRequest():EditTipRequest{
+    return EditTipRequest(
+        title = title,
+        description = description,
+        imageSrc = imageSrc,
+        color = color,
+        serverId = serverId!!,
+        tags = tags
+    )
+}
+
+fun Tip.toAddTipRequest():AddTipRequest{
+    return AddTipRequest(
+        title, description, imageSrc, tags, color
     )
 }

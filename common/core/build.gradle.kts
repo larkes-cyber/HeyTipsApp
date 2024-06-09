@@ -49,6 +49,15 @@ kotlin{
             }
         }
 
+        androidUnitTest{
+            dependencies{
+                implementation(libs.ktor.client.core.test)
+                implementation(libs.sqldelight.sqlite.driver)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.client.okhttp)
+            }
+        }
+
     }
 }
 

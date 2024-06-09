@@ -29,6 +29,7 @@ plugin-libres = { module = "io.github.skeptick.libres:gradle-plugin", version.re
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 compose-navigation = {module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation"}
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 plugin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
@@ -44,6 +45,7 @@ ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "k
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-http = { module = "io.ktor:ktor-http", version.ref = "ktor" }
+ktor-client-core-test = {module = "io.ktor:ktor-client-mock", version.ref = "ktor"}
 
 plugin-sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }

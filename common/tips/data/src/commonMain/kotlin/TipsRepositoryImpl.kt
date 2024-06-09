@@ -1,7 +1,13 @@
 import database.TipsSqlDelightDataSource
+import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.client.plugins.HttpTimeout
 import ktor.TipsKtorDataSource
+import ktor.models.AddTipRequest
 import ktor.models.DeleteTipRequest
+import ktor.models.FetchTipQuery
 import ktor.models.FetchTipsQuery
+import mapper.toAddTipRequest
+import mapper.toEditTipRequest
 import mapper.toTip
 import mapper.toTipEntity
 import models.Tip
@@ -16,7 +22,7 @@ class TipsRepositoryImpl(
         return if(cachedTips.size >= offset+limit && refresh.not()){
             cachedTips.map {
                 it.toTip()
-            }.subList(offset, limit)
+            }.subList(offset-1, offset + limit - 1)
         }else{
             tipsSqlDelightDataSource.clearTips()
             val serverTips = tipsKtorDataSource.fetchTips(FetchTipsQuery(limit = limit, offset = offset))
@@ -29,13 +35,39 @@ class TipsRepositoryImpl(
         }
     }
 
-    override suspend fun deleteTip(id: String) {
+    override suspend fun deleteTip(id: String, serverId:String?) {
         tipsSqlDelightDataSource.deleteTip(id)
-        tipsKtorDataSource.deleteTip(DeleteTipRequest(id))
+        if(serverId != null) tipsKtorDataSource.deleteTip(DeleteTipRequest(serverId))
     }
 
-    override suspend fun insertTip(tip: Tip) {
+    override suspend fun insertTip(tip: Tip):String {
         val id = randomUUID()
-        tipsSqlDelightDataSource.insertTip(tip.toTipEntity(id))
+        try {
+            val serverId = tipsKtorDataSource.insertTip(tip.toAddTipRequest())
+            tip.serverId = serverId.serverId
+        }catch (_:HttpRequestTimeoutException){
+        }finally {
+            tipsSqlDelightDataSource.insertTip(tip.toTipEntity(id))
+        }
+        return id
+    }
+
+    override suspend fun fetchTip(id: String):Tip {
+        val localTip = tipsSqlDelightDataSource.fetchTip(id)
+        return if(localTip.serverId != null){
+            val serverTip = tipsKtorDataSource.fetchTip(FetchTipQuery(localTip.serverId!!))
+            serverTip.toTip(id)
+        }else{
+            localTip.toTip()
+        }
+
+    }
+
+    override suspend fun editTip(tip: Tip) {
+        tipsSqlDelightDataSource.deleteTip(tip.id!!)
+        tipsSqlDelightDataSource.insertTip(tip.toTipEntity(tip.id!!))
+        if(tip.serverId != null){
+            tipsKtorDataSource.editTip(tip.toEditTipRequest())
+        }
     }
 }

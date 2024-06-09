@@ -13,6 +13,8 @@ import io.ktor.http.path
 import ktor.models.AddTipRequest
 import ktor.models.AddTipResponse
 import ktor.models.DeleteTipRequest
+import ktor.models.EditTipRequest
+import ktor.models.FetchTipQuery
 import ktor.models.FetchTipsQuery
 import ktor.models.TipResponse
 
@@ -63,11 +65,39 @@ class TipsKtorDataSource(
         }
     }
 
-    companion object{
+    suspend fun fetchTip(fetchTipQuery: FetchTipQuery):TipResponse{
+        val res = httpClient.get {
+            contentType(ContentType.Application.Json)
+            url{
+                parameter("id", fetchTipQuery.id)
+                path(FETCH_ONE_TIP)
+            }
+        }
+        if(res.status != HttpStatusCode.OK){
+            throw Error(res.status.description)
+        }
+        return res.body()
+    }
 
-        private const val INSERT_TIP = "insertTip"
-        private const val FETCH_TIPS = "fetchTips"
-        private const val DELETE_TIP = "deleteTip"
+    suspend fun editTip(editTipRequest: EditTipRequest){
+        val res = httpClient.post {
+            contentType(ContentType.Application.Json)
+            url{
+                path(EDIT_TIP)
+            }
+            setBody(editTipRequest)
+        }
+        if(res.status != HttpStatusCode.OK){
+            throw Error(res.status.description)
+        }
+    }
+
+    companion object{
+        private const val INSERT_TIP = "tips/add"
+        private const val FETCH_TIPS = "tips/fetch"
+        private const val DELETE_TIP = "tips/delete"
+        private const val FETCH_ONE_TIP = "tips/fetchOne"
+        private const val EDIT_TIP = "tips/edit"
 
     }
 

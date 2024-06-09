@@ -13,14 +13,14 @@ class TipsSqlDelightDataSource(
     private val queries = db.tipsQueries
 
     suspend fun insertTip(tipEntity: TipEntity){
-
         queries.insertTip(
             id = tipEntity.id,
             description =  tipEntity.description,
             color = tipEntity.color,
             imageSrc = tipEntity.imageSrc,
             tags = tipEntity.tags,
-            title = tipEntity.title
+            title = tipEntity.title,
+            serverId = tipEntity.serverId
         )
     }
 
@@ -34,6 +34,10 @@ class TipsSqlDelightDataSource(
 
     suspend fun clearTips(){
         queries.clearStorage()
+    }
+
+    suspend fun fetchTip(id:String):TipEntity{
+        return queries.fetchTip(id).executeAsOne()
     }
 
 }

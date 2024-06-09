@@ -30,3 +30,8 @@ DELETE FROM tipEntity;
 deleteTip:
 DELETE FROM tipEntity
 WHERE id = ?;
+
+fetchTip:
+SELECT *
+FROM tipEntity
+WHERE id = ?;
