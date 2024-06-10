@@ -11,6 +11,8 @@ object PlatformSDK {
             })
             modules(coreModule)
             modules(tipsModule)
+            modules(adminModule)
+            modules(userModule)
         }.koin
         Inject.createDependencies(diTree)
     }

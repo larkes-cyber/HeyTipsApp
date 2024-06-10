@@ -9,9 +9,10 @@ kotlin{
 
         commonMain{
             dependencies{
-
                 implementation(project(":common:core"))
                 implementation(project(":common:tips:data"))
+                implementation(project(":common:admin:data"))
+                implementation(project(":common:user:data"))
 
             }
         }

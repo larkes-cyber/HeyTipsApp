@@ -104,7 +104,7 @@ class TestTipsRepository {
             tipsRepository.insertTip(testTip)
 
             tipsRepository.fetchTips(false, 100, 1).forEach {
-                tipsRepository.deleteTip(id = it.id!!, serverId = it.serverId)
+                tipsRepository.deleteTip(id = it.id!!)
 
             }
             val tips = tipsRepository.fetchTips(false, 100, 1)
