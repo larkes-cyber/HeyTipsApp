@@ -48,8 +48,11 @@ kotlin {
             baseName = "SharedSDK"
             export(project(":common:core"))
             export(project(":common:core-root"))
+            export(libs.compose.navigation)
+            export(project(":common:compose-root"))
             isStatic = true
-         }
+            export("org.jetbrains.compose.collection-internal:collection:1.6.0-beta01")
+        }
     }
 
     sourceSets {
@@ -67,6 +70,8 @@ kotlin {
             implementation(project(":common:core-root"))
             implementation(project(":common:core"))
             implementation(libs.compose.navigation)
+            implementation(project(":common:compose-root"))
+            implementation("org.jetbrains.compose.collection-internal:collection:1.6.0-beta01")
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -75,6 +80,10 @@ kotlin {
             dependencies{
                 api(project(":common:core-root"))
                 api(project(":common:core"))
+                api(libs.compose.navigation)
+                api(project(":common:compose-root"))
+                api("org.jetbrains.compose.collection-internal:collection:1.6.0-beta01")
+
             }
         }
     }

@@ -3,5 +3,7 @@ import androidx.navigation.compose.rememberNavController
 
 fun MainViewController() = ComposeUIViewController {
     PlatformSDK.init(PlatformConfiguration())
-    App()
+   // val navController = rememberNavController()
+   // Navigation(navController)
+    Text("lol")
 }

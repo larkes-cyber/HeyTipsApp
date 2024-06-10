@@ -8,9 +8,11 @@ kotlin{
 
         commonMain{
             dependencies{
-
                 implementation(libs.compose.navigation)
-
+                implementation(project(":common:user:compose"))
+                implementation(project(":common:admin:compose"))
+                implementation(project(":common:core-utils"))
+                implementation(project(":common:auth:compose"))
             }
         }
 

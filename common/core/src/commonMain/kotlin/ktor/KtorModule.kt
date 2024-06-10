@@ -8,7 +8,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
-internal val ktorModule = module {
+val ktorModule = module {
     single {
          HttpClient(HttpEngineFactory().createEngine()){
              install(ContentNegotiation){
