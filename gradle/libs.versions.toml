@@ -7,8 +7,9 @@ plugin-compose = "1.6.0-beta01"
 kotlin = "1.9.22"
 libres = "1.2.2"
 coroutines = "1.7.3"
-navigation = "2.7.0-alpha07"
 serialization = "1.5.1"
+decompose = "2.2.3"
+extensionsComposeJetbrains = "2.1.4-compose-experimental"
 
 
 # Libraries
@@ -28,7 +29,6 @@ plugin-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", versi
 plugin-libres = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-compose-navigation = {module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation"}
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 plugin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
@@ -51,8 +51,12 @@ plugin-sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref 
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+koin = "io.insert-koin:koin-core:3.2.0"
 
-koin = "io.insert-koin:koin-core:3.3.3"
+decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "extensionsComposeJetbrains" }
+
+
 
 [plugins]
 android = { id = "com.android.application", version.ref = "plugin-android" }

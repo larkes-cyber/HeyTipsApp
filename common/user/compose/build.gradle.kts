@@ -6,7 +6,7 @@ kotlin{
         commonMain{
             dependencies{
                 implementation(project(":common:core-utils"))
-                implementation(libs.compose.navigation)
+                implementation(project(":common:user:presentation"))
             }
         }
     }

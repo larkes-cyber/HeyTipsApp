@@ -2,9 +2,11 @@ package tips_list
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
+import list.AdminTipsListComponent
 
 @Composable
-fun AdminTipsScreen(navController: NavController) {
+fun AdminTipsScreen(
+    adminTipsListComponent: AdminTipsListComponent
+) {
     Text("admin list")
 }

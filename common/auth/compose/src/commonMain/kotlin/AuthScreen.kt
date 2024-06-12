@@ -3,22 +3,23 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+
 
 @Composable
-fun AuthScreen(navController: NavController) {
+fun AuthScreen(
+    component: AuthScreenComponent
+) {
     Column {
         Button(
             onClick = {
-                navController.navigate(NavigationTree.Admin.TipsList.name)
+                component.adminNavigate()
             }
         ){
             Text("Admin")
         }
         Button(
             onClick = {
-                navController.navigate(NavigationTree.User.TipsList.name)
+                component.userNavigate()
             }
         ){
             Text("User")

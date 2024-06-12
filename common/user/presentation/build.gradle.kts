@@ -1,17 +1,24 @@
 plugins{
     id("multiplatform")
 }
+
 kotlin{
     sourceSets{
+
         commonMain{
+
             dependencies{
+
+                api(libs.decompose.core)
                 implementation(project(":common:core-utils"))
-                implementation(project(":common:auth:presentation"))
+
             }
+
         }
+
     }
 }
 
 android {
-    namespace = "org.larkes.contacts.common.main"
+    namespace = "org.larkes.contacts.common.user.presentation"
 }

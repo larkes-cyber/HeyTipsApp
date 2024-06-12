@@ -1,10 +1,12 @@
 package tips_list
 
+import UserTipsScreenComponent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 
 @Composable
-fun UserTipsScreen(navController: NavController) {
+fun UserTipsScreen(
+    userTipsScreenComponent: UserTipsScreenComponent
+) {
     Text("user list")
 }

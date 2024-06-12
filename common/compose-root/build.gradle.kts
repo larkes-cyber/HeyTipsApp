@@ -6,13 +6,18 @@ plugins{
 kotlin{
     sourceSets{
 
+
         commonMain{
             dependencies{
-                implementation(libs.compose.navigation)
                 implementation(project(":common:user:compose"))
                 implementation(project(":common:admin:compose"))
-                implementation(project(":common:core-utils"))
                 implementation(project(":common:auth:compose"))
+                implementation(project(":common:user:presentation"))
+                implementation(project(":common:admin:presentation"))
+                implementation(project(":common:auth:presentation"))
+                implementation(project(":common:core-utils"))
+                api(libs.decompose.core)
+                implementation(libs.decompose.jetbrains)
             }
         }
 

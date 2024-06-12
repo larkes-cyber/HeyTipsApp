@@ -5,8 +5,8 @@ kotlin{
     sourceSets{
         commonMain{
             dependencies{
+                api(libs.decompose.core)
                 implementation(project(":common:core-utils"))
-                implementation(project(":common:auth:presentation"))
             }
         }
     }

@@ -1,23 +1,29 @@
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.compose.runtime.getValue
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slide
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
+import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 import tips_list.AdminTipsScreen
 import tips_list.UserTipsScreen
 
 @Composable
-fun Navigation(navHostController: NavHostController) {
+fun Navigation(root: RootComponent) {
 
-    NavHost(navController = navHostController, startDestination =NavigationTree.Auth.Auth.name){
-        composable(route = NavigationTree.User.TipsList.name){
-            UserTipsScreen(navHostController)
+
+    val childStack by root.childStack.subscribeAsState()
+
+    Children(
+        stack = childStack,
+        animation = stackAnimation(slide())
+    ){child ->
+        when(val instance = child.instance){
+            is Child.AuthScreen -> AuthScreen(instance.component)
+            is Child.UserTipsListScreen -> UserTipsScreen(instance.component)
+            is Child.AdminTipsListScreen -> AdminTipsScreen(instance.component)
         }
-        composable(route = NavigationTree.Admin.TipsList.name){
-            AdminTipsScreen(navHostController)
-        }
-        composable(route = NavigationTree.Auth.Auth.name){
-            AuthScreen(navHostController)
-        }
+
     }
 
 }

@@ -1,15 +1,11 @@
-object NavigationTree {
+import kotlinx.serialization.Serializable
 
-    enum class Auth{
-        Auth
-    }
-
-    enum class User{
-        TipsList, FavoriteTips, TipDetail
-    }
-
-    enum class Admin{
-        TipsList, AddTip, EditTip, TipDetail
-    }
-
+@Serializable
+sealed class NavigationTree{
+    @Serializable
+    data object AuthScreen:NavigationTree()
+    @Serializable
+    data object AdminTipsListScreen:NavigationTree()
+    @Serializable
+    data object UserTipsListScreen:NavigationTree()
 }

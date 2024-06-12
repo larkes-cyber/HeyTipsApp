@@ -1,9 +1,12 @@
+import androidx.compose.runtime.remember
 import androidx.compose.ui.window.ComposeUIViewController
-import androidx.navigation.compose.rememberNavController
+import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 
 fun MainViewController() = ComposeUIViewController {
     PlatformSDK.init(PlatformConfiguration())
-   // val navController = rememberNavController()
-   // Navigation(navController)
-    Text("lol")
+    val root = remember {
+        RootComponent(DefaultComponentContext(LifecycleRegistry()))
+    }
+   Navigation(root)
 }
