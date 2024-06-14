@@ -1,7 +1,7 @@
 [versions]
 # Plugins
 plugin-android = "8.1.4"
-plugin-compose = "1.6.0-beta01"
+plugin-compose = "1.6.10"
 
 # Multiplatform
 kotlin = "1.9.22"

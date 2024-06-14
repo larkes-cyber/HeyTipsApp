@@ -64,7 +64,6 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
-            implementation(compose.components.resources)
             implementation(project(":common:core-root"))
             implementation(project(":common:core"))
             implementation(project(":common:compose-root"))
@@ -87,6 +86,9 @@ kotlin {
 android {
     namespace = "org.larkes.contacts"
     compileSdk = 34
+
+
+
     defaultConfig {
         applicationId = "org.larkes.contacts"
         minSdk = libs.versions.mindsdk.get().toInt()

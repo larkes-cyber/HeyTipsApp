@@ -8,4 +8,6 @@ sealed class NavigationTree{
     data object AdminTipsListScreen:NavigationTree()
     @Serializable
     data object UserTipsListScreen:NavigationTree()
+    @Serializable
+    data object AddTipScreen:NavigationTree()
 }

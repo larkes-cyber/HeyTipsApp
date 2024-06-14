@@ -1,3 +1,5 @@
+import add.AddTipComponent
+import add.AddTipScreen
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -5,7 +7,7 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
-import tips_list.AdminTipsScreen
+import list.AdminTipsScreen
 import tips_list.UserTipsScreen
 
 @Composable
@@ -22,6 +24,7 @@ fun Navigation(root: RootComponent) {
             is Child.AuthScreen -> AuthScreen(instance.component)
             is Child.UserTipsListScreen -> UserTipsScreen(instance.component)
             is Child.AdminTipsListScreen -> AdminTipsScreen(instance.component)
+            is Child.AddTipScreen -> AddTipScreen(instance.component)
         }
 
     }

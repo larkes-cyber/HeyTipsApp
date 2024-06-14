@@ -1,7 +1,8 @@
+import add.AddTipComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
-import list.AdminTipsListComponent
+import list.AdminTipsComponent
 
 class RootComponent(
     componentContext: ComponentContext
@@ -23,19 +24,25 @@ class RootComponent(
     ): Child {
         return when(config) {
             NavigationTree.AuthScreen -> Child.AuthScreen(
-                AuthScreenComponent(
+                AuthComponent(
                     componentContext = context,
                     navigation = navigation
                 )
             )
             NavigationTree.AdminTipsListScreen -> Child.AdminTipsListScreen(
-                AdminTipsListComponent(
+                AdminTipsComponent(
                     componentContext = context,
                     navigation = navigation
                 )
             )
             NavigationTree.UserTipsListScreen -> Child.UserTipsListScreen(
                 UserTipsScreenComponent(
+                    componentContext = context,
+                    navigation = navigation
+                )
+            )
+            NavigationTree.AddTipScreen -> Child.AddTipScreen(
+                AddTipComponent(
                     componentContext = context,
                     navigation = navigation
                 )
