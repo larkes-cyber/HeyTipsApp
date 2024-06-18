@@ -2,11 +2,16 @@ package ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.request.forms.MultiPartFormDataContent
+import io.ktor.client.request.forms.formData
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
+import io.ktor.http.Headers
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.http.path
@@ -92,12 +97,33 @@ class TipsKtorDataSource(
         }
     }
 
+    suspend fun uploadPhoto(file:ByteArray):String{
+        val response = httpClient.post(UPLOAD_TIP_IMAGE){
+            setBody(
+                MultiPartFormDataContent(
+                    formData {
+                        append("image", file, Headers.build {
+                            append(HttpHeaders.ContentType, "image/png")
+                            append(HttpHeaders.ContentDisposition, "filename=\"ktor_logo.png\"")
+                        })
+                    },
+                    boundary = "WebAppBoundary"
+                )
+            )
+        }
+        if(response.status != HttpStatusCode.OK){
+            throw Error(response.status.description)
+        }
+        return response.body()
+    }
+
     companion object{
         private const val INSERT_TIP = "tips/add"
         private const val FETCH_TIPS = "tips/fetch"
         private const val DELETE_TIP = "tips/delete"
         private const val FETCH_ONE_TIP = "tips/fetchOne"
         private const val EDIT_TIP = "tips/edit"
+        private const val UPLOAD_TIP_IMAGE = "tips/image/upload"
 
     }
 

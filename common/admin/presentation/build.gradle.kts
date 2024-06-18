@@ -7,6 +7,8 @@ kotlin{
             dependencies{
                 api(libs.decompose.core)
                 implementation(project(":common:core-utils"))
+                implementation(project(":common:core"))
+                api(project(":common:admin:api"))
             }
         }
     }

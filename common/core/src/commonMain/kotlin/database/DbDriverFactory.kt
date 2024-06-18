@@ -6,7 +6,7 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
 
 expect class DbDriverFactory(platformConfiguration: PlatformConfiguration) {
-    suspend fun provideDbDriver(
+    fun provideDbDriver(
         schema: SqlSchema<QueryResult.AsyncValue<Unit>>,
     ): SqlDriver
 }

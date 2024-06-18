@@ -20,7 +20,7 @@ val ktorModule = module {
              }
 
              defaultRequest {
-                 url("https://pokeapi.co")
+                 url("http://10.8.5.36:8084")
              }
 
              install(HttpTimeout){

@@ -16,9 +16,17 @@ sqldelight {
 kotlin{
     sourceSets{
 
+        androidMain{
+            dependencies{
+                implementation(libs.androidx.activity.compose)
+            }
+        }
+
+
+
         commonMain{
             dependencies{
-                api(libs.koin)
+                api(libs.koin.core)
                 api(libs.kotlinx.coroutines)
                 api(libs.ktor.client.core)
                 implementation(libs.ktor.client.json)

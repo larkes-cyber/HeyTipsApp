@@ -46,9 +46,6 @@ kotlin {
         framework {
             transitiveExport = false
             baseName = "SharedSDK"
-            export(project(":common:core"))
-            export(project(":common:core-root"))
-            export(project(":common:compose-root"))
             isStatic = true
         }
     }
@@ -73,9 +70,6 @@ kotlin {
         }
         iosMain{
             dependencies{
-                api(project(":common:core-root"))
-                api(project(":common:core"))
-                api(project(":common:compose-root"))
 
             }
         }

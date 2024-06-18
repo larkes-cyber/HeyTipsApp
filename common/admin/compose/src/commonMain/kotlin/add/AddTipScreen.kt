@@ -1,6 +1,9 @@
 package add
 
+import ImagePicker
+import add.models.AddTipUIEvent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,16 +41,21 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import androidx.compose.ui.text.style.TextAlign
@@ -55,15 +63,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.eygraber.compose.colorpicker.ColorPicker
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.launch
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AddTipScreen(
     addTipComponent: AddTipComponent
 ) {
 
-    val textField = remember {
-        mutableStateOf("")
-    }
+    val addTipUIState by addTipComponent.addTipUIState.collectAsState()
     val scrollState = rememberScrollState()
 
     Column(
@@ -86,38 +97,20 @@ fun AddTipScreen(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = null,
                     modifier = Modifier.size(35.dp).clickable {
-                        addTipComponent.goBack()
+                        addTipComponent.onEvent(AddTipUIEvent.BackArrowClicked)
                     }
                 )
             }
         }
         Spacer(modifier = Modifier.height(20.dp))
         Row(modifier = Modifier.fillMaxWidth().height(210.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            Card(
-                modifier = Modifier.weight(0.42f),
-                shape = RoundedCornerShape(12.dp),
-                onClick = {
+            Column(modifier = Modifier.weight(0.45f)) {
+                ImagePicker(
+                    onImagePicked = {
+                        addTipComponent.onEvent(AddTipUIEvent.ImageUploaded(it))
+                    }
+                )
 
-                }
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(vertical = 28.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(text = "Select tip photo",
-                        fontSize = 24.sp,
-                        modifier = Modifier.fillMaxWidth(),
-                        fontWeight = FontWeight.Medium,
-                        textAlign = TextAlign.Center
-                    )
-                    Icon(
-                        imageVector = Icons.Outlined.Face,
-                        contentDescription = null,
-                        modifier = Modifier.size(70.dp)
-                    )
-
-                }
             }
             Column(
                 modifier = Modifier.weight(0.58f).fillMaxHeight(),
@@ -128,9 +121,9 @@ fun AddTipScreen(
                             Text("Enter title")
                     },
                     onValueChange = {
-
+                        addTipComponent.onEvent(AddTipUIEvent.TitleChanged(it))
                     },
-                    value = textField.value,
+                    value = addTipUIState.title,
                     modifier = Modifier.padding(vertical = 0.dp)
                 )
                 Column {
@@ -148,23 +141,44 @@ fun AddTipScreen(
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
                         items(Tags.entries){
-                            Box(
+                            Card(
                                 modifier = Modifier
-                                    .height(40.dp)
-                                    .border(border = BorderStroke(1.dp, Color.Black.copy(alpha = 0.12f)), shape = RoundedCornerShape(10.dp))
-                                    .clickable {  },
-                                contentAlignment = Alignment.Center
-                            ){
-                                Text(
-                                    it.name,
-                                    fontSize = 18.sp,
-                                    textAlign = TextAlign.Center
-                                )
+                                    .height(40.dp),
+                                border = BorderStroke(1.dp, Color.Black.copy(alpha = 0.12f)), shape = RoundedCornerShape(10.dp),
+                                onClick = {
+                                    addTipComponent.onEvent(AddTipUIEvent.TagClicked(it.name))
+                                }
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    if(addTipUIState.selectedTags.contains(it.name)){
+                                        Icon(
+                                            imageVector = Icons.Default.Check,
+                                            contentDescription = null
+                                        )
+                                    }else{
+                                        Text(
+                                            it.name,
+                                            fontSize = 18.sp,
+                                            textAlign = TextAlign.Center
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+        if(addTipUIState.image != null) {
+            Text(
+                text = "Фото подгружено",
+                color = Color.Green,
+                fontSize = 14.sp
+            )
         }
         Spacer(modifier = Modifier.height(22.dp))
         Text(text = "Description",
@@ -177,9 +191,9 @@ fun AddTipScreen(
                 Text("Enter text here...")
             },
             onValueChange = {
-
+                addTipComponent.onEvent(AddTipUIEvent.DescriptionChanged(it))
             },
-            value = textField.value,
+            value = addTipUIState.description,
             modifier = Modifier.defaultMinSize(minHeight = 150.dp).fillMaxWidth().padding(vertical = 0.dp)
         )
         Spacer(modifier = Modifier.height(22.dp))
@@ -193,12 +207,14 @@ fun AddTipScreen(
             ColorPicker(
                 modifier = Modifier.size(210.dp)
             ) {
-
+                addTipComponent.onEvent(AddTipUIEvent.ColorSelected(it.value.toLong()))
             }
         }
         Spacer(modifier = Modifier.height(22.dp))
         Button(
-            onClick = {},
+            onClick = {
+                addTipComponent.onEvent(AddTipUIEvent.AddClicked)
+            },
             modifier = Modifier.fillMaxWidth().height(70.dp),
             shape = RoundedCornerShape(10.dp)
         ){

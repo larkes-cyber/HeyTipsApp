@@ -17,7 +17,11 @@ androidx-appcompat = "1.6.1"
 androidx-activityCompose = "1.8.2"
 sqldelight = "2.0.0"
 ktor = "2.3.5"
+koin = "3.2.0"
 
+# third party libres
+mpfilepicker = "3.1.0"
+colorpicker = "0.0.19"
 
 # Android
 mindsdk = "24"
@@ -51,11 +55,14 @@ plugin-sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref 
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
-koin = "io.insert-koin:koin-core:3.2.0"
+
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "extensionsComposeJetbrains" }
 
+compose-image-picker = {module = "com.darkrockstudios:mpfilepicker", version.ref = "mpfilepicker"}
+compose-color-picker = {module = "com.eygraber:compose-color-picker", version.ref = "colorpicker"}
 
 
 [plugins]

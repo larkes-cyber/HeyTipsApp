@@ -71,4 +71,8 @@ class TipsRepositoryImpl(
             tipsKtorDataSource.editTip(tip.toEditTipRequest())
         }
     }
+
+    override suspend fun uploadPhoto(byteArray: ByteArray): String {
+        return tipsKtorDataSource.uploadPhoto(byteArray)
+    }
 }

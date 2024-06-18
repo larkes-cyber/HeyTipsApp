@@ -6,5 +6,6 @@ interface TipsRepository {
     suspend fun insertTip(tip: Tip):String
     suspend fun fetchTip(id:String):Tip
     suspend fun editTip(tip: Tip)
+    suspend fun uploadPhoto(byteArray: ByteArray):String
 
 }

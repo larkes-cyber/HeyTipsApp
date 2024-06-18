@@ -9,7 +9,7 @@ kotlin{
         commonMain{
 
             dependencies{
-
+                implementation(libs.compose.image.picker)
             }
 
         }

@@ -21,6 +21,10 @@ class AdminRepositoryImpl(
     override suspend fun deleteTip(id: String) {
         tipsRepository.deleteTip(id)
     }
+
+    override suspend fun uploadPhoto(file: ByteArray): String {
+       return tipsRepository.uploadPhoto(file)
+    }
 }
 
 fun AdminTip.toTip(): Tip {
