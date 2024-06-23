@@ -45,6 +45,15 @@ class TestTipsRepository {
     }
 
     @Test
+    fun `delete 100 tips`(){
+        runBlocking {
+            tipsRepository.fetchTips(true, 100, 1).forEach {
+                 tipsRepository.deleteTip(it.id!!)
+            }
+        }
+    }
+
+    @Test
     fun `fetch 5 and 5 tips`(){
         runBlocking {
 

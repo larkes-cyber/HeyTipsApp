@@ -2,6 +2,8 @@
 # Plugins
 plugin-android = "8.1.4"
 plugin-compose = "1.6.10"
+coil3 = "3.0.0-alpha06"
+
 
 # Multiplatform
 kotlin = "1.9.22"
@@ -11,6 +13,7 @@ serialization = "1.5.1"
 decompose = "2.2.3"
 extensionsComposeJetbrains = "2.1.4-compose-experimental"
 
+kotlinxCoroutinesSwing = "1.8.0"
 
 # Libraries
 androidx-appcompat = "1.6.1"
@@ -64,6 +67,11 @@ decompose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jet
 compose-image-picker = {module = "com.darkrockstudios:mpfilepicker", version.ref = "mpfilepicker"}
 compose-color-picker = {module = "com.eygraber:compose-color-picker", version.ref = "colorpicker"}
 
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxCoroutinesSwing" }
 
 [plugins]
 android = { id = "com.android.application", version.ref = "plugin-android" }
@@ -73,4 +81,5 @@ libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
 

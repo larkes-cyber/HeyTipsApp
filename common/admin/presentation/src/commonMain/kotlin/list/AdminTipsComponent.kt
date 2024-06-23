@@ -18,7 +18,7 @@ import list.models.AdminTipsEvent
 import list.models.AdminTipsUIState
 
 class AdminTipsComponent(
-    private val navigation: StackNavigation<NavigationTree>,
+    val navigation: StackNavigation<NavigationTree>,
     componentContext: ComponentContext
 ):ComponentContext by componentContext {
 
@@ -27,10 +27,6 @@ class AdminTipsComponent(
     private val _tipsUIState = MutableStateFlow(AdminTipsUIState())
     val tipsUIState:StateFlow<AdminTipsUIState> = _tipsUIState
 
-    init {
-        fetchNextTips()
-    }
-
     fun obtainEvent(adminTipsEvent: AdminTipsEvent){
 
         when(adminTipsEvent){
@@ -38,15 +34,32 @@ class AdminTipsComponent(
             is AdminTipsEvent.AddIconClicked -> {
                 obtainAddIconClicked()
             }
+            is AdminTipsEvent.ListEnded -> {
+                fetchNextTips()
+            }
+
+            is AdminTipsEvent.ScreenOpened -> {
+                obtainScreenOpened()
+            }
 
         }
 
     }
 
+    private fun obtainScreenOpened() {
+        _tipsUIState.value = AdminTipsUIState(loaderActive = true)
+    }
+
     private fun fetchNextTips(){
-        CoroutineScope(Dispatchers.IO).launch {
+        _tipsUIState.value = _tipsUIState.value.copy(isLoading = true)
+        CoroutineScope(Dispatchers.Default).launch {
+            println("fetched ${tipsUIState.value.offset}")
             val tips = repository.fetchTips(limit = 5, offset = tipsUIState.value.offset, refresh = false)
-            _tipsUIState.value = tipsUIState.value.copy(list = tips, offset = tipsUIState.value.offset + tips.size)
+            if(tips.isEmpty()){
+                _tipsUIState.value = tipsUIState.value.copy(loaderActive = false)
+                return@launch
+            }
+            _tipsUIState.value = tipsUIState.value.copy(list = tipsUIState.value.list + tips, offset = tipsUIState.value.offset + tips.size, isLoading = false)
         }
     }
 

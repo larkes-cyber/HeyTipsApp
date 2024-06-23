@@ -1,6 +1,7 @@
 package add
 
 import ImagePicker
+import add.models.AddTipUIAction
 import add.models.AddTipUIEvent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -61,6 +62,11 @@ import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.router.stack.push
+import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.eygraber.compose.colorpicker.ColorPicker
 
 import kotlinx.coroutines.CoroutineScope
@@ -75,6 +81,7 @@ fun AddTipScreen(
 ) {
 
     val addTipUIState by addTipComponent.addTipUIState.collectAsState()
+
     val scrollState = rememberScrollState()
 
     Column(
@@ -207,6 +214,7 @@ fun AddTipScreen(
             ColorPicker(
                 modifier = Modifier.size(210.dp)
             ) {
+
                 addTipComponent.onEvent(AddTipUIEvent.ColorSelected(it.value.toLong()))
             }
         }

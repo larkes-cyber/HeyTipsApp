@@ -2,6 +2,7 @@ package add
 
 import AdminRepository
 import NavigationTree
+import add.models.AddTipUIAction
 import add.models.AddTipUIEvent
 import add.models.AddTipUIState
 import com.arkivanov.decompose.ComponentContext
@@ -14,12 +15,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.launch
 import models.AdminTip
 import models.AdminTipTags
 
 class AddTipComponent(
-    private val navigation: StackNavigation<NavigationTree>,
+    val navigation: StackNavigation<NavigationTree>,
     componentContext: ComponentContext
 ):ComponentContext by componentContext {
 
@@ -27,6 +29,9 @@ class AddTipComponent(
 
     private val _addTipUIState = MutableStateFlow(AddTipUIState())
     val addTipUIState:StateFlow<AddTipUIState> = _addTipUIState
+
+    private val _addTipUIAction = MutableStateFlow<AddTipUIAction?>(null)
+    val addTipUIAction:StateFlow<AddTipUIAction?> = _addTipUIAction
 
     fun onEvent(event:AddTipUIEvent){
         when(event){
@@ -55,13 +60,15 @@ class AddTipComponent(
     }
 
     private fun addClicked() {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.Default).launch {
 
             val imageURL = try {
                 addTipUIState.value.image?.let {
                     repository.uploadPhoto(file = it)
                 }
             }catch (e:Exception){ null }
+
+            println("color selected ${addTipUIState.value.selectedColor}")
 
             repository.addTip(AdminTip(
                 title = addTipUIState.value.title,
@@ -71,7 +78,8 @@ class AddTipComponent(
                 color = addTipUIState.value.selectedColor
                  )
             )
-            navigation.pop()
+
+            obtainBackArrowClicked()
         }
     }
 
@@ -80,6 +88,7 @@ class AddTipComponent(
     }
 
     private fun obtainColorSelected(color: Long) {
+        println("color selected $color")
         _addTipUIState.value = addTipUIState.value.copy(selectedColor = color)
     }
 

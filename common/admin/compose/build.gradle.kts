@@ -9,6 +9,7 @@ kotlin{
                 implementation(project(":common:admin:presentation"))
                 implementation(project(":common:compose-utils"))
                 implementation(libs.compose.color.picker)
+                implementation(project(":common:tips:compose"))
             }
         }
     }

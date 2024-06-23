@@ -20,12 +20,12 @@ val ktorModule = module {
              }
 
              defaultRequest {
-                 url("http://10.8.5.36:8084")
+                 url("http://172.20.10.3:8084")
              }
 
              install(HttpTimeout){
-                 connectTimeoutMillis = 15000
-                 requestTimeoutMillis = 50000
+                 connectTimeoutMillis = 159000
+                 requestTimeoutMillis = 500000
              }
          }
     }
