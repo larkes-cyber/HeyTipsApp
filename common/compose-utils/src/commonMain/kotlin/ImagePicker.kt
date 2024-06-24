@@ -32,73 +32,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ImagePicker(
+expect fun ImagePicker(
     modifier: Modifier = Modifier,
     onImagePicked:(ByteArray) -> Unit = {}
-) {
+)
 
-    var pickerActive by remember {
-        mutableStateOf(false)
-    }
-    val bytesState = remember {
-        mutableStateOf<ByteArray?>(null)
-    }
-    val imageState = rememberBitmapFromBytes(bytesState.value)
 
-    val fileType = listOf("jpg", "png")
-    fun imageHandler(file: MPFile<Any>){
-        CoroutineScope(Dispatchers.IO).launch {
-            val bytes = file.getFileByteArray()
-            file.path
-            onImagePicked(bytes)
-            bytesState.value = bytes
-        }
-    }
-
-    FilePicker(show = pickerActive, fileExtensions = fileType) { platformFile ->
-        if(platformFile != null){
-            imageHandler(platformFile)
-            pickerActive = false
-        }
-    }
-    Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(12.dp),
-        onClick = {
-            pickerActive = true
-        }
-    ) {
-        Box(
-            modifier = modifier.fillMaxSize()
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(vertical = 28.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = "Select tip photo",
-                    fontSize = 24.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
-                )
-                Icon(
-                    imageVector = Icons.Outlined.Face,
-                    contentDescription = null,
-                    modifier = Modifier.size(70.dp)
-                )
-
-            }
-            if(imageState != null){
-                Image(
-                    bitmap = imageState,
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-        }
-    }
-}

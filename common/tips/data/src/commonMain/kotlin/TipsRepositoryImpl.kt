@@ -39,7 +39,6 @@ class TipsRepositoryImpl(
     }
 
     override suspend fun deleteTip(id: String) {
-        println("tipsSqlDelightDataS $id")
         val localTipServerId = tipsSqlDelightDataSource.fetchTip(id).serverId
         tipsSqlDelightDataSource.deleteTip(id)
         if(localTipServerId != null) tipsKtorDataSource.deleteTip(DeleteTipRequest(localTipServerId))

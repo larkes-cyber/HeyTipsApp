@@ -35,7 +35,6 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import io.ktor.util.toUpperCasePreservingASCIIRules
 
 
 @Composable

@@ -6,6 +6,21 @@ kotlin{
 
     sourceSets{
 
+
+        iosMain{
+            dependencies{
+                implementation(libs.peekaboo.ui)
+                implementation(libs.peekaboo.image.picker)
+            }
+        }
+
+        androidMain{
+            dependencies{
+                implementation(libs.peekaboo.ui)
+                implementation(libs.peekaboo.image.picker)
+            }
+        }
+
         commonMain{
 
             dependencies{
