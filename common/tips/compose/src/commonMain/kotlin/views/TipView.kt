@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -70,7 +71,7 @@ fun TipView(
                     horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = title.toUpperCasePreservingASCIIRules(),
+                        text = title.toUpperCase(),
                         fontSize = 18.sp,
                         color = Color(0xff2B2B2B),
                         fontWeight = FontWeight.SemiBold

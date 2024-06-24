@@ -181,11 +181,12 @@ fun AddTipScreen(
             }
         }
         if(addTipUIState.image != null) {
-            Text(
-                text = "Фото подгружено",
-                color = Color.Green,
-                fontSize = 14.sp
-            )
+//            Text(
+//                text = "Фото подгружено",
+//                color = Color.Green,
+//                fontSize = 14.sp,
+//                modifier = Modifier.padding(start = 15.dp)
+//            )
         }
         Spacer(modifier = Modifier.height(22.dp))
         Text(text = "Description",
