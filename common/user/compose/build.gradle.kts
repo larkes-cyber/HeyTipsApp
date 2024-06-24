@@ -7,6 +7,7 @@ kotlin{
             dependencies{
                 implementation(project(":common:core-utils"))
                 implementation(project(":common:user:presentation"))
+                implementation(project(":common:tips:compose"))
             }
         }
     }

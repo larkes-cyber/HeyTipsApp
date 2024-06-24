@@ -10,7 +10,9 @@ kotlin{
             dependencies{
 
                 api(libs.decompose.core)
+                api(project(":common:user:api"))
                 implementation(project(":common:core-utils"))
+                implementation(project(":common:core"))
 
             }
 

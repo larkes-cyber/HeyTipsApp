@@ -59,7 +59,7 @@ fun TipView(
             ) {
                 AsyncImage(
                     modifier = modifier.weight(0.3f).height(160.dp),
-                    model = "http://172.20.10.3:8084/tips/image/get?id=$imageSrc",
+                    model = "http://10.8.5.117:8084/tips/image/get?id=$imageSrc",
                     contentDescription = "",
                     contentScale = ContentScale.Crop
                 )

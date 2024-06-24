@@ -16,13 +16,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -73,19 +77,49 @@ fun AdminTipsScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        Box(
+            modifier = Modifier.padding(horizontal = 20.dp)
+        ) {
+            Button(
+                onClick = {
+                    adminTipsComponent.obtainEvent(AdminTipsEvent.RefreshPulled)
+                },
+                modifier = Modifier.fillMaxWidth().height(42.dp),
+                shape = RoundedCornerShape(25)
+            ){
+                Text("Refresh", color = Color.White)
+            }
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
         ) {
             itemsIndexed(tipsUIState.list){index, item ->
-                TipView(
-                    title = item.title,
-                    description = item.description,
-                    imageSrc = item.imageSrc,
-                    modifier = Modifier.fillMaxWidth(0.9f),
-                    color = item.color,
-                    tags = item.tags?.tags ?: listOf()
-                )
+                Box(
+                    modifier = Modifier.fillMaxSize()
+                ){
+                    TipView(
+                        title = item.title,
+                        description = item.description,
+                        imageSrc = item.imageSrc,
+                        color = item.color,
+                        tags = item.tags?.tags ?: listOf()
+                    )
+                    IconButton(
+                        onClick = {
+                            println("id_item: ${item.id}")
+                            adminTipsComponent.obtainEvent(AdminTipsEvent.DeleteClicked(item.id ?: ""))
+                        },
+                        modifier = Modifier.align(Alignment.TopEnd)
+                    ){
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = null,
+                            tint = Color.Red.copy(alpha = 0.7f),
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(10.dp))
             }
             item{
@@ -101,6 +135,5 @@ fun AdminTipsScreen(
                 }
             }
         }
-
     }
 }

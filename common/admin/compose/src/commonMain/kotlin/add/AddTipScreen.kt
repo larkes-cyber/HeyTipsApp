@@ -134,7 +134,7 @@ fun AddTipScreen(
                     modifier = Modifier.padding(vertical = 0.dp)
                 )
                 Column {
-                    Text(text = "Chose tag",
+                    Text(text = "Select tags",
                         fontSize = 22.sp,
                         modifier = Modifier.fillMaxWidth(),
                         fontWeight = FontWeight.Medium,

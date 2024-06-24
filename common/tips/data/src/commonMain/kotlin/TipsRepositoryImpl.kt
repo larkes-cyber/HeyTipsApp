@@ -11,6 +11,7 @@ import mapper.toEditTipRequest
 import mapper.toTip
 import mapper.toTipEntity
 import models.Tip
+import org.larkes.contacts.database.TipEntity
 import uuid.randomUUID
 
 class TipsRepositoryImpl(
@@ -19,24 +20,26 @@ class TipsRepositoryImpl(
 ):TipsRepository {
     override suspend fun fetchTips(refresh:Boolean, limit:Int, offset:Int): List<Tip> {
         val cachedTips = tipsSqlDelightDataSource.fetchTips()
-        return if(cachedTips.size >= offset+limit && refresh.not()){
-            cachedTips.map {
-                it.toTip()
-            }.subList(offset-1, offset + limit - 1)
+        if(cachedTips.size >= offset+limit && refresh.not()){
+            return prepareCachedList(list = cachedTips, offset = offset, limit = limit)
         }else{
-            tipsSqlDelightDataSource.clearTips()
-            val serverTips = tipsKtorDataSource.fetchTips(FetchTipsQuery(limit = limit, offset = offset))
-            val tips = serverTips.map {
-                val id = randomUUID()
-                tipsSqlDelightDataSource.insertTip(it.toTipEntity(id))
-                it.toTip(id)
+            return try {
+                val serverTips = tipsKtorDataSource.fetchTips(FetchTipsQuery(limit = limit, offset = offset))
+                if(refresh) tipsSqlDelightDataSource.clearTips()
+                val tips = serverTips.map {
+                    val id = randomUUID()
+                    tipsSqlDelightDataSource.insertTip(it.toTipEntity(id))
+                    it.toTip(id)
+                }
+                tips
+            }catch (e:Exception){
+                prepareCachedList(list = cachedTips, offset = offset, limit = limit)
             }
-            tips
         }
     }
 
     override suspend fun deleteTip(id: String) {
-        println(tipsSqlDelightDataSource.fetchTips())
+        println("tipsSqlDelightDataS $id")
         val localTipServerId = tipsSqlDelightDataSource.fetchTip(id).serverId
         tipsSqlDelightDataSource.deleteTip(id)
         if(localTipServerId != null) tipsKtorDataSource.deleteTip(DeleteTipRequest(localTipServerId))
@@ -76,4 +79,14 @@ class TipsRepositoryImpl(
     override suspend fun uploadPhoto(byteArray: ByteArray): String {
         return tipsKtorDataSource.uploadPhoto(byteArray)
     }
+
+    private fun prepareCachedList(list:List<TipEntity>, offset:Int, limit:Int):List<Tip>{
+
+        if(offset > list.size) return emptyList()
+
+        val finalLimit = if(limit + offset >= list.size) list.size else limit
+
+        return list.map { it.toTip() }.subList(offset-1, offset + finalLimit - 1)
+    }
+
 }

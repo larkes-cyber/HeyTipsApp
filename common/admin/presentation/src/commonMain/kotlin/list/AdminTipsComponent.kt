@@ -42,19 +42,39 @@ class AdminTipsComponent(
                 obtainScreenOpened()
             }
 
+            is AdminTipsEvent.DeleteClicked -> {
+                obtainDeleteClicked(adminTipsEvent.id)
+            }
+
+            is AdminTipsEvent.RefreshPulled -> {
+                obtainRefreshPulled()
+            }
+
         }
 
+    }
+
+    private fun obtainRefreshPulled() {
+        _tipsUIState.value = AdminTipsUIState()
+        fetchNextTips(true)
+    }
+
+    private fun obtainDeleteClicked(id: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.deleteTip(id)
+            obtainRefreshPulled()
+        }
     }
 
     private fun obtainScreenOpened() {
         _tipsUIState.value = AdminTipsUIState(loaderActive = true)
     }
 
-    private fun fetchNextTips(){
+    private fun fetchNextTips(refresh:Boolean = false){
         _tipsUIState.value = _tipsUIState.value.copy(isLoading = true)
         CoroutineScope(Dispatchers.Default).launch {
-            println("fetched ${tipsUIState.value.offset}")
-            val tips = repository.fetchTips(limit = 5, offset = tipsUIState.value.offset, refresh = false)
+
+            val tips = repository.fetchTips(limit = 5, offset = tipsUIState.value.offset, refresh = refresh)
             if(tips.isEmpty()){
                 _tipsUIState.value = tipsUIState.value.copy(loaderActive = false)
                 return@launch
