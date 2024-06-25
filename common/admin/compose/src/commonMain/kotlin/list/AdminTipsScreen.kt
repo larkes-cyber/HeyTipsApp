@@ -108,7 +108,6 @@ fun AdminTipsScreen(
                     )
                     IconButton(
                         onClick = {
-                            println("id_item: ${item.id}")
                             adminTipsComponent.obtainEvent(AdminTipsEvent.DeleteClicked(item.id ?: ""))
                         },
                         modifier = Modifier.align(Alignment.TopEnd)
@@ -126,7 +125,6 @@ fun AdminTipsScreen(
                 if(tipsUIState.loaderActive){
                     CircularProgressIndicator(
                         modifier = Modifier.onFocusEvent {
-                            println("focused")
                             if(tipsUIState.isLoading.not()){
                                 adminTipsComponent.obtainEvent(AdminTipsEvent.ListEnded)
                             }

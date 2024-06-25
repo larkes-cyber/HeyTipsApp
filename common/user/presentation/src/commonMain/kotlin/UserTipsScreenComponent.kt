@@ -50,7 +50,6 @@ class UserTipsScreenComponent(
     private fun fetchNextTips(refresh:Boolean = false){
         _tipsUIState.value = _tipsUIState.value.copy(isLoading = true)
         CoroutineScope(Dispatchers.Default).launch {
-            println("fetched ${tipsUIState.value.offset}")
             val tips = repository.fetchTips(limit = 5, offset = tipsUIState.value.offset, refresh = refresh)
             if(tips.isEmpty()){
                 _tipsUIState.value = tipsUIState.value.copy(loaderActive = false)

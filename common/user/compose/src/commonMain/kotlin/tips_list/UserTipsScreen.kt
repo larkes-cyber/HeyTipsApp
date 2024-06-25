@@ -95,7 +95,6 @@ fun UserTipsScreen(
                 if(tipsUIState.loaderActive){
                     CircularProgressIndicator(
                         modifier = Modifier.onFocusEvent {
-                            println("focused")
                             if(tipsUIState.isLoading.not()){
                                 userTipsScreenComponent.obtainEvent(UserTipsEvent.ListEnded)
                             }

@@ -67,9 +67,6 @@ class AddTipComponent(
                     repository.uploadPhoto(file = it)
                 }
             }catch (e:Exception){ null }
-
-            println("color selected ${addTipUIState.value.selectedColor}")
-
             repository.addTip(AdminTip(
                 title = addTipUIState.value.title,
                 description = addTipUIState.value.description,
@@ -88,7 +85,6 @@ class AddTipComponent(
     }
 
     private fun obtainColorSelected(color: Long) {
-        println("color selected $color")
         _addTipUIState.value = addTipUIState.value.copy(selectedColor = color)
     }
 
@@ -97,7 +93,6 @@ class AddTipComponent(
     }
 
     private fun obtainTagClicked(tag: String) {
-        println("clicked")
         val tags = addTipUIState.value.selectedTags.toMutableList()
         if(tags.contains(tag)) tags.remove(tag)
         else tags.add(tag)

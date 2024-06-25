@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,6 +30,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -54,13 +56,13 @@ fun TipView(
     ) {
         Box(modifier = Modifier.fillMaxSize().background(if(color == null) Color.White else Color(color.toULong()).copy(alpha = 0.24f))){
             Row(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 15.dp, horizontal = 18.dp),
+                modifier = Modifier.fillMaxSize().padding(vertical = 15.dp, horizontal = 18.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.Bottom
             ) {
                 if(imageSrc != null) {
                     AsyncImage(
-                        modifier = modifier.weight(0.3f).height(160.dp),
+                        modifier = modifier.weight(0.3f).height(160.dp).clip(RoundedCornerShape(10)),
                         model = "${Constants.SERVER_URL}/tips/image/get?id=$imageSrc",
                         contentDescription = "",
                         contentScale = ContentScale.Crop
@@ -68,22 +70,25 @@ fun TipView(
                     Spacer(modifier = Modifier.weight(0.05f))
                 }
                 Column(
-                    modifier = Modifier.weight(0.65f),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier =if(imageSrc == null) Modifier.weight(0.65f) else Modifier.weight(0.65f).heightIn(min = 125.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Text(
-                        text = title.toUpperCase(),
-                        fontSize = 18.sp,
-                        color = Color(0xff2B2B2B),
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    Text(
-                        text = if(description.length > 140) description.substring(0, 138)  else description,
-                        fontSize = 13.sp,
-                        color = Color(0xff2B2B2B),
-                        fontWeight = FontWeight.Medium
-                    )
+                    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Text(
+                            text = title.toUpperCase(),
+                            fontSize = 18.sp,
+                            color = Color(0xff2B2B2B),
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Text(
+                            text = if(description.length > 140) description.substring(0, 138)  else description,
+                            fontSize = 13.sp,
+                            color = Color(0xff2B2B2B),
+                            fontWeight = FontWeight.Medium
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(3),
                         modifier = Modifier.heightIn(max = 200.dp),

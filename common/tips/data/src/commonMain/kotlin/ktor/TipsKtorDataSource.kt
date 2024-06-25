@@ -29,8 +29,6 @@ class TipsKtorDataSource(
 
     suspend fun insertTip(addTipRequest: AddTipRequest):AddTipResponse{
 
-        println("fdfdddd ${addTipRequest.title}  ${addTipRequest.description}")
-
         val res = httpClient.post {
             contentType(ContentType.Application.Json)
 
@@ -46,7 +44,6 @@ class TipsKtorDataSource(
     }
 
     suspend fun fetchTips(fetchTipsQuery: FetchTipsQuery):List<TipResponse>{
-        println("${fetchTipsQuery.limit} bgfvgfg")
         val res = httpClient.get {
             contentType(ContentType.Application.Json)
             url{
