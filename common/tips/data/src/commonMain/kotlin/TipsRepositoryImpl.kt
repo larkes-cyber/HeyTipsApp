@@ -1,8 +1,6 @@
 import database.TipsSqlDelightDataSource
 import io.ktor.client.plugins.HttpRequestTimeoutException
-import io.ktor.client.plugins.HttpTimeout
 import ktor.TipsKtorDataSource
-import ktor.models.AddTipRequest
 import ktor.models.DeleteTipRequest
 import ktor.models.FetchTipQuery
 import ktor.models.FetchTipsQuery
@@ -50,7 +48,6 @@ class TipsRepositoryImpl(
             val serverId = tipsKtorDataSource.insertTip(tip.toAddTipRequest())
             tip.serverId = serverId.serverId
         }catch (_:HttpRequestTimeoutException){
-        }finally {
             tipsSqlDelightDataSource.insertTip(tip.toTipEntity(id))
         }
         return id

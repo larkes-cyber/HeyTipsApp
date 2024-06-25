@@ -10,5 +10,5 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 
 
 actual class DbDriverFactory actual constructor(private val platformConfiguration: PlatformConfiguration) {
-    actual fun provideDbDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>): SqlDriver = AndroidSqliteDriver(schema.synchronous(), platformConfiguration.context, "contacts.db")
+    actual fun provideDbDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>): SqlDriver = AndroidSqliteDriver(schema.synchronous(), platformConfiguration.context, "heytips.db")
 }

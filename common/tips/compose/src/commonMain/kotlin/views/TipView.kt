@@ -58,7 +58,7 @@ fun TipView(
             Row(
                 modifier = Modifier.fillMaxSize().padding(vertical = 15.dp, horizontal = 18.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 if(imageSrc != null) {
                     AsyncImage(
@@ -70,8 +70,7 @@ fun TipView(
                     Spacer(modifier = Modifier.weight(0.05f))
                 }
                 Column(
-                    modifier =if(imageSrc == null) Modifier.weight(0.65f) else Modifier.weight(0.65f).heightIn(min = 125.dp),
-                    verticalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.weight(0.65f).padding(top = if(imageSrc != null) 20.dp else 0.dp),
                     horizontalAlignment = Alignment.Start
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {

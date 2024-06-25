@@ -21,5 +21,5 @@ kotlin{
 }
 
 android {
-    namespace = "org.larkes.contacts.common.core.root"
+    namespace = "org.larkes.heytips.common.core.root"
 }

@@ -2,8 +2,8 @@ package database
 
 import kotlinx.serialization.json.Json
 import models.TipTags
-import org.larkes.contacts.TipsDatabase
 import org.larkes.contacts.database.TipEntity
+import org.larkes.heytips.TipsDatabase
 
 
 class TipsSqlDelightDataSource(

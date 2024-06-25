@@ -35,5 +35,5 @@ kotlin{
 }
 
 android {
-    namespace = "org.larkes.contacts.common.tips.data"
+    namespace = "org.larkes.heytips.common.tips.data"
 }

@@ -1,7 +1,7 @@
 package database
 
 import org.koin.dsl.module
-import org.larkes.contacts.TipsDatabase
+import org.larkes.heytips.TipsDatabase
 
 val dbModule = module {
     single {

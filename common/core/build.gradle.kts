@@ -6,7 +6,7 @@ plugins{
 sqldelight {
     databases {
         create("TipsDatabase") {
-            packageName.set("org.larkes.contacts")
+            packageName.set("org.larkes.heytips")
             generateAsync.set(true)
         }
     }
@@ -71,5 +71,5 @@ kotlin{
 }
 
 android {
-    namespace = "org.larkes.contacts.common.core"
+    namespace = "org.larkes.heytips.common.core"
 }

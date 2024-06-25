@@ -1,4 +1,4 @@
-rootProject.name = "ContactsApp"
+rootProject.name = "heytipsApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

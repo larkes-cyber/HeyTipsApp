@@ -11,7 +11,7 @@ import ktor.TipsKtorDataSource
 import models.Tip
 import org.junit.Before
 import org.junit.Test
-import org.larkes.contacts.TipsDatabase
+import org.larkes.heytips.TipsDatabase
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 

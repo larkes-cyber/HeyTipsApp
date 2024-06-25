@@ -94,6 +94,7 @@ fun AdminTipsScreen(
 
         LazyColumn(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             itemsIndexed(tipsUIState.list){index, item ->
                 Box(

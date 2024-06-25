@@ -1,4 +1,4 @@
-package org.larkes.contacts
+package org.larkes.heytips
 
 import App
 import Navigation

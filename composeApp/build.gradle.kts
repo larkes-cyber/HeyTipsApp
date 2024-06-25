@@ -78,13 +78,13 @@ kotlin {
 
 
 android {
-    namespace = "org.larkes.contacts"
+    namespace = "org.larkes.heytips"
     compileSdk = 34
 
 
 
     defaultConfig {
-        applicationId = "org.larkes.contacts"
+        applicationId = "org.larkes.heytips"
         minSdk = libs.versions.mindsdk.get().toInt()
         targetSdk = 34
         versionCode = 1
@@ -113,7 +113,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.larkes.contacts"
+            packageName = "org.larkes.heytips"
             packageVersion = "1.0.0"
         }
     }

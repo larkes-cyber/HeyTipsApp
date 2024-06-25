@@ -17,5 +17,5 @@ kotlin{
 }
 
 android {
-    namespace = "org.larkes.contacts.common.user"
+    namespace = "org.larkes.heytips.common.user"
 }
