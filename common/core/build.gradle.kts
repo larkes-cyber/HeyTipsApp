@@ -33,6 +33,7 @@ kotlin{
                 implementation(libs.ktor.client.serialization)
                 implementation(libs.ktor.client.negotiation)
                 implementation(libs.ktor.client.logging)
+                implementation(project(":common:core-utils"))
             }
         }
 

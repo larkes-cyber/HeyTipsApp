@@ -70,18 +70,19 @@ actual fun ImagePicker(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Select tip photo",
-                    fontSize = 24.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
-                )
-                Icon(
-                    imageVector = Icons.Outlined.Face,
-                    contentDescription = null,
-                    modifier = Modifier.size(70.dp)
-                )
-
+                if(bytesState == null){
+                    Text(text = "Select tip photo",
+                        fontSize = 24.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                        fontWeight = FontWeight.Medium,
+                        textAlign = TextAlign.Center
+                    )
+                    Icon(
+                        imageVector = Icons.Outlined.Face,
+                        contentDescription = null,
+                        modifier = Modifier.size(70.dp)
+                    )
+                }
             }
             if(bytesState != null){
                 Image(

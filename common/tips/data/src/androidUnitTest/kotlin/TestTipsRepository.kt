@@ -84,6 +84,29 @@ class TestTipsRepository {
     }
 
     @Test
+    fun `should fetch 7 tips`(){
+        runBlocking {
+            val tips = mutableListOf<Tip>()
+            var offset = 1
+            val limit = 5
+            tips += tipsRepository.fetchTips(refresh = false, offset = offset, limit = limit)
+            offset+=limit
+            tips += tipsRepository.fetchTips(refresh = false, offset = offset, limit = limit)
+            offset+=limit
+            tips += tipsRepository.fetchTips(refresh = false, offset = offset, limit = limit)
+            offset+=limit
+            tips.forEach {
+                println(it.title)
+            }
+            assertEquals(tips.size , 7)
+
+
+
+        }
+
+    }
+
+    @Test
     fun `should show 5 tips`(){
         runBlocking {
             // pumping tips

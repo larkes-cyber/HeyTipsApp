@@ -1,5 +1,6 @@
 package views
 
+import Constants
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -57,13 +58,15 @@ fun TipView(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                AsyncImage(
-                    modifier = modifier.weight(0.3f).height(160.dp),
-                    model = "http://10.8.5.117:8084/tips/image/get?id=$imageSrc",
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop
-                )
-                Spacer(modifier = Modifier.weight(0.05f))
+                if(imageSrc != null) {
+                    AsyncImage(
+                        modifier = modifier.weight(0.3f).height(160.dp),
+                        model = "${Constants.SERVER_URL}/tips/image/get?id=$imageSrc",
+                        contentDescription = "",
+                        contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.weight(0.05f))
+                }
                 Column(
                     modifier = Modifier.weight(0.65f),
                     verticalArrangement = Arrangement.spacedBy(10.dp),

@@ -20,7 +20,8 @@ class TipsRepositoryImpl(
 ):TipsRepository {
     override suspend fun fetchTips(refresh:Boolean, limit:Int, offset:Int): List<Tip> {
         val cachedTips = tipsSqlDelightDataSource.fetchTips()
-        if(cachedTips.size >= offset+limit && refresh.not()){
+        println("tips_params offset:$offset limit:$limit")
+        if(cachedTips.size >= offset && refresh.not()){
             return prepareCachedList(list = cachedTips, offset = offset, limit = limit)
         }else{
             return try {

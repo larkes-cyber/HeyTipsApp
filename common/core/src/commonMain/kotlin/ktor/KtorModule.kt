@@ -1,5 +1,6 @@
 package ktor
 
+import Constants
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -20,7 +21,7 @@ val ktorModule = module {
              }
 
              defaultRequest {
-                 url("http://10.8.5.117:8084")
+                 url(Constants.SERVER_URL)
              }
 
              install(HttpTimeout){
