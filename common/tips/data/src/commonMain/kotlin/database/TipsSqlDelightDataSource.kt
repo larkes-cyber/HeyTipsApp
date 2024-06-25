@@ -1,7 +1,5 @@
 package database
 
-import kotlinx.serialization.json.Json
-import models.TipTags
 import org.larkes.contacts.database.TipEntity
 import org.larkes.heytips.TipsDatabase
 
@@ -28,7 +26,7 @@ class TipsSqlDelightDataSource(
         queries.deleteTip(id)
     }
 
-    suspend fun fetchTips():List<TipEntity>{
+    fun fetchTips():List<TipEntity>{
         return queries.fetchTips().executeAsList()
     }
 
@@ -36,7 +34,7 @@ class TipsSqlDelightDataSource(
         queries.clearStorage()
     }
 
-    suspend fun fetchTip(id:String):TipEntity{
+    fun fetchTip(id:String):TipEntity{
         return queries.fetchTip(id).executeAsOne()
     }
 
