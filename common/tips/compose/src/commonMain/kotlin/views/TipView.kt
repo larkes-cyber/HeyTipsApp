@@ -90,7 +90,7 @@ fun TipView(
                     }
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(3),
-                        modifier = Modifier.heightIn(max = 200.dp),
+                        modifier = Modifier.heightIn(max = if(tags.size > 3) 200.dp else 100.dp),
                         horizontalArrangement = Arrangement.spacedBy(3.dp),
                         verticalArrangement = Arrangement.spacedBy(3.dp)
                     ){
