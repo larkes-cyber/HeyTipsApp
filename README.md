@@ -12,7 +12,7 @@
 <img width="1440" alt="image" src="https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/aeae86f0-b91e-484c-a0a6-b6302d586b7f">
 
 ## Download
-Go to the [Releases](https://github.com/larkes-cyber/PokedexApp/releases) to download the latest APK.
+Go to the [Releases](https://github.com/larkes-cyber/HeyTipsApp/releases/tag/publish) to download the latest APK.
 
 ## Main features
 - Ios/Android/Desktop
