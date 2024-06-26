@@ -1,14 +1,24 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+  <h1 align="center">HeyTips</h1>
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat"/></a>
+</p>
+<p align="center">  
+  HeyTips is a fullstack cross-platform mobile app that demonstrates modern Compose Multiplatform development with Decompose, Koin, SqlDelight, Ktor based on Multi-Module MVI architecture. Includes admin panel and user sreens based on one technology.
+</p>
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+> [!TIP]
+> If you want to see more the Kotlin Multiplatform content, check out the [telegram](https://t.me/snikky_notes) channel.
+<img width="1000" alt="image" src="https://github.com/larkes-cyber/PokedexApp/assets/79082708/bfef6e48-a5cd-4721-b228-f25e6757700d">
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Download
+Go to the [Releases](https://github.com/larkes-cyber/PokedexApp/releases) to download the latest APK.
 
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Main features
+- Ios/Android/Desktop
+- Caching/Pagination
+- Image Picker/Internet Images
+- Multi-module/MVI
+- MVC ktor server
+  
+  
