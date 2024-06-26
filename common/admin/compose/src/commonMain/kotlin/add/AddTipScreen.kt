@@ -211,6 +211,12 @@ fun AddTipScreen(
                 addTipComponent.onEvent(AddTipUIEvent.ColorSelected(it.value.toLong()))
             }
         }
+        Spacer(modifier = Modifier.height(14.dp))
+        Text(
+            text = addTipUIState.error,
+            fontSize = 15.sp,
+            color = Color.Red.copy(alpha = 0.7f)
+            )
         Spacer(modifier = Modifier.height(22.dp))
         Button(
             onClick = {

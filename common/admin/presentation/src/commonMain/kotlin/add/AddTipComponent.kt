@@ -30,8 +30,6 @@ class AddTipComponent(
     private val _addTipUIState = MutableStateFlow(AddTipUIState())
     val addTipUIState:StateFlow<AddTipUIState> = _addTipUIState
 
-    private val _addTipUIAction = MutableStateFlow<AddTipUIAction?>(null)
-    val addTipUIAction:StateFlow<AddTipUIAction?> = _addTipUIAction
 
     fun onEvent(event:AddTipUIEvent){
         when(event){
@@ -60,23 +58,27 @@ class AddTipComponent(
     }
 
     private fun addClicked() {
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
 
             val imageURL = try {
                 addTipUIState.value.image?.let {
                     repository.uploadPhoto(file = it)
                 }
             }catch (e:Exception){ null }
-            repository.addTip(AdminTip(
-                title = addTipUIState.value.title,
-                description = addTipUIState.value.description,
-                imageSrc = imageURL,
-                tags = AdminTipTags(tags = addTipUIState.value.selectedTags),
-                color = addTipUIState.value.selectedColor
-                 )
-            )
+            try {
+                repository.addTip(AdminTip(
+                    title = addTipUIState.value.title,
+                    description = addTipUIState.value.description,
+                    imageSrc = imageURL,
+                    tags = AdminTipTags(tags = addTipUIState.value.selectedTags),
+                    color = addTipUIState.value.selectedColor
+                    )
+                )
+                obtainBackArrowClicked()
+            }catch (e:Exception){
+                _addTipUIState.value = _addTipUIState.value.copy(error = "Internet connection error")
+            }
 
-            obtainBackArrowClicked()
         }
     }
 

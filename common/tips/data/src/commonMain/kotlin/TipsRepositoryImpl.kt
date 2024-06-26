@@ -44,12 +44,9 @@ class TipsRepositoryImpl(
 
     override suspend fun insertTip(tip: Tip):String {
         val id = randomUUID()
-        try {
-            val serverId = tipsKtorDataSource.insertTip(tip.toAddTipRequest())
-            tip.serverId = serverId.serverId
-        }catch (_:HttpRequestTimeoutException){
-            tipsSqlDelightDataSource.insertTip(tip.toTipEntity(id))
-        }
+        val serverId = tipsKtorDataSource.insertTip(tip.toAddTipRequest())
+        tip.serverId = serverId.serverId
+        tipsSqlDelightDataSource.insertTip(tip.toTipEntity(id))
         return id
     }
 

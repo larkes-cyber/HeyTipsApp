@@ -28,19 +28,19 @@ class TipsKtorDataSource(
 ) {
 
     suspend fun insertTip(addTipRequest: AddTipRequest):AddTipResponse{
+            val res = httpClient.post {
+                contentType(ContentType.Application.Json)
 
-        val res = httpClient.post {
-            contentType(ContentType.Application.Json)
-
-            url{
-                path(INSERT_TIP)
+                url{
+                    path(INSERT_TIP)
+                }
+                setBody(addTipRequest)
             }
-            setBody(addTipRequest)
-        }
-        if(res.status != HttpStatusCode.OK){
-            throw Error(res.status.description)
-        }
-        return res.body()
+            if(res.status != HttpStatusCode.OK){
+                throw Error(res.status.description)
+            }
+            return res.body()
+
     }
 
     suspend fun fetchTips(fetchTipsQuery: FetchTipsQuery):List<TipResponse>{
