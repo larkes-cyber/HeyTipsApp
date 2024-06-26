@@ -9,7 +9,7 @@
 
 > [!TIP]
 > If you want to see more the Kotlin Multiplatform content, check out the [telegram](https://t.me/snikky_notes) channel.
-<img width="1000" alt="image" src="https://github.com/larkes-cyber/PokedexApp/assets/79082708/bfef6e48-a5cd-4721-b228-f25e6757700d">
+<img width="1440" alt="image" src="https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/aeae86f0-b91e-484c-a0a6-b6302d586b7f">
 
 ## Download
 Go to the [Releases](https://github.com/larkes-cyber/PokedexApp/releases) to download the latest APK.
