@@ -45,17 +45,46 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
   - [Ktor](https://ktor.io/docs/client-create-multiplatform-application.html):Ktor includes a multiplatform asynchronous HTTP client, which allows you to make requests and handle responses, extend its functionality with plugins, such as authentication, JSON serialization, and so on.
   - [Serialization﻿](https://github.com/Kotlin/kotlinx.serialization): Kotlin serialization consists of a compiler plugin, that generates visitor code for serializable classes, runtime library with core serialization API and support libraries with various serialization formats.
 ### Compose Multiplatform
-#### [Coil](https://coil-kt.github.io/coil/compose/): Loading images from network.
+- **Coil: Loading images from network.**
 > Code implementation: [realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/compose/src/commonMain/kotlin/views/TipView.kt)
 > 
 > Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/compose/build.gradle.kts)
 > 
 > Lib overview: [link](https://proandroiddev.com/coil-for-compose-multiplatform-5745ea76356f)
+
+- **File Picker: Compose file picker for desktop.**
+> Code implementation: [realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-utils/src/desktopMain/kotlin/ImagePicker.desktop.kt)
 > 
-  - [Desktop File Picker](https://github.com/Wavesonics/compose-multiplatform-file-picker)
-  - [Image Picker](https://github.com/onseok/peekaboo): Image picker for Android/Ios
-  - [Color Picker](https://github.com/eygraber/compose-color-picker): Cross-platform color picker
-  - [Decompose Navigation](https://www.youtube.com/watch?v=g4XSWQ7QT8g&ab_channel=PhilippLackner): Cross-platform navigation
+> Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-utils/build.gradle.kts)
+> 
+> Lib overview: [link](https://github.com/Wavesonics/compose-multiplatform-file-picker)
+
+- **Image Picker: Image picker for Android/Ios.**
+> Code implementation:
+> - [android realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-utils/src/androidMain/kotlin/ImagePicker.android.kt)
+> - [ios realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-utils/src/iosMain/kotlin/ImagePicker.ios.kt)
+> 
+> Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-utils/build.gradle.kts)
+> 
+> Lib overview: [link](https://github.com/onseok/peekaboo)
+
+- **Color Picker: Cross-platform color picker.**
+> Code implementation: [realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/admin/compose/src/commonMain/kotlin/add/AddTipScreen.kt)
+> 
+> Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/admin/compose/build.gradle.kts)
+> 
+> Lib overview: [link](https://github.com/eygraber/compose-color-picker)
+
+- **Decompose Navigation: Cross-platform navigation.**
+> Code implementation:
+> - [nav realization](https://github.com/larkes-cyber/HeyTipsApp/tree/release/common/compose-root/src/commonMain/kotlin)
+> - [android realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/composeApp/src/androidMain/kotlin/org/larkes/contacts/MainActivity.kt)
+> - [ios realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/composeApp/src/iosMain/kotlin/MainViewController.kt)
+> - [desktop realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/composeApp/src/jvmMain/kotlin/main.kt)
+> 
+> Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/compose-root/build.gradle.kts)
+> 
+> Lib overview: [link](https://www.youtube.com/watch?v=g4XSWQ7QT8g&ab_channel=PhilippLackner)
 
   
 
