@@ -37,12 +37,20 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
   - Gradle kts: Gradle’s Kotlin DSL provides an alternative syntax to the traditional Groovy DSL with an enhanced editing experience in supported IDEs, with superior content assist.
 - Architecture
   - Multi-Module Concept: Modularization is a practice of organizing a codebase into loosely coupled and self contained parts. Each part is a module. Each module is independent and serves a clear purpose.
-  - Decompose:  library for breaking down your code into tree-structured lifecycle-aware business logic components (aka BLoC), with routing functionality and pluggable UI
+  - Decompose: library for breaking down your code into tree-structured lifecycle-aware business logic components (aka BLoC), with routing functionality and pluggable UI
   - [Koin](https://insert-koin.io/docs/reference/koin-mp/kmp/): Koin provides us with an all-in kotlin library to use it in our shared module to create injections that can be used by both Android and iOS
   - Repository Pattern: Repository commonly refers to a storage location, often for safety or preservation.
+- Client/Server
   - [SqlDelight](https://github.com/cashapp/sqldelight):SQLDelight is a powerful tool for implementing data persistence in Kotlin Multiplatform Mobile (KMM) projects
   - [Ktor](https://ktor.io/docs/client-create-multiplatform-application.html):Ktor includes a multiplatform asynchronous HTTP client, which allows you to make requests and handle responses, extend its functionality with plugins, such as authentication, JSON serialization, and so on.
-  - [Coil Compose Multiplatform](https://coil-kt.github.io/coil/compose/): Loading images from network.
+  - [Serialization﻿](https://github.com/Kotlin/kotlinx.serialization): Kotlin serialization consists of a compiler plugin, that generates visitor code for serializable classes, runtime library with core serialization API and support libraries with various serialization formats.
+- Compose Multiplatform
+  - [Coil](https://coil-kt.github.io/coil/compose/): Loading images from network.
+  - [Desktop File Picker](https://github.com/Wavesonics/compose-multiplatform-file-picker)
+  - [Image Picker](https://github.com/onseok/peekaboo): Image picker for Android/Ios
+  - [Color Picker](https://github.com/eygraber/compose-color-picker): Cross-platform color picker
+  - [Decompose Navigation](https://www.youtube.com/watch?v=g4XSWQ7QT8g&ab_channel=PhilippLackner): Cross-platform navigation
+
   
 
 
