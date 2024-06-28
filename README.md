@@ -28,6 +28,7 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
 ## [Admin overview](https://drive.google.com/file/d/1EE9t2STVpTXjqui5ElY9uj6weLOooZqR/view?usp=sharing)
 ## [Desktop overview](https://drive.google.com/file/d/1MBCaQKwFDSDqJmL8322-t_sleTriB1GR/view?usp=sharing)
 
+
 ## Tech stack & Open-source libraries
 - Minimum SDK level 24
 - iOS Deployment Target 15.3
@@ -44,6 +45,10 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
   - [SqlDelight](https://github.com/cashapp/sqldelight):SQLDelight is a powerful tool for implementing data persistence in Kotlin Multiplatform Mobile (KMM) projects
   - [Ktor](https://ktor.io/docs/client-create-multiplatform-application.html):Ktor includes a multiplatform asynchronous HTTP client, which allows you to make requests and handle responses, extend its functionality with plugins, such as authentication, JSON serialization, and so on.
   - [Serialization﻿](https://github.com/Kotlin/kotlinx.serialization): Kotlin serialization consists of a compiler plugin, that generates visitor code for serializable classes, runtime library with core serialization API and support libraries with various serialization formats.
+
+## <img width="800" alt="image" src="https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/e441d672-cefe-44de-a7f5-b1edffb6cc3d">
+
+
 ### Compose Multiplatform
 - **Coil: Loading images from network.**
 > Code implementation: [realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/compose/src/commonMain/kotlin/views/TipView.kt)
@@ -86,8 +91,24 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
 > 
 > Lib overview: [link](https://www.youtube.com/watch?v=g4XSWQ7QT8g&ab_channel=PhilippLackner)
 
-  
 
+### <img width="600" alt="image" src="https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/fcb8d7ac-2d01-47dc-bc1b-9228815dc24d">
+
+## Architecture
+**HeyTipsApp** is based on the Multi-Module Concept, the MVI architecture and the Repository pattern
+
+<img width="400" alt="image" src="https://github.com/larkes-cyber/PokedexApp/assets/79082708/503c2012-d204-430a-b816-7223d4afc356">
+<img width="400" alt="image" src="https://github.com/larkes-cyber/PokedexApp/assets/79082708/8997f2bf-4a9c-461e-9860-a561ab9e1cbb">
+
+The project includes 8 modules where: 1 composeApp, 3 features, 2 core, 1 umbrella, 1 utils.
+
+### Tips
+The feature is to work with tips and contain common ui components
+
+### Feature User
+The feature is to 
+
+### Feature Admin
 
 
   
