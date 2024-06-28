@@ -44,8 +44,14 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
   - [SqlDelight](https://github.com/cashapp/sqldelight):SQLDelight is a powerful tool for implementing data persistence in Kotlin Multiplatform Mobile (KMM) projects
   - [Ktor](https://ktor.io/docs/client-create-multiplatform-application.html):Ktor includes a multiplatform asynchronous HTTP client, which allows you to make requests and handle responses, extend its functionality with plugins, such as authentication, JSON serialization, and so on.
   - [Serialization﻿](https://github.com/Kotlin/kotlinx.serialization): Kotlin serialization consists of a compiler plugin, that generates visitor code for serializable classes, runtime library with core serialization API and support libraries with various serialization formats.
-- Compose Multiplatform
-  - [Coil](https://coil-kt.github.io/coil/compose/): Loading images from network.
+### Compose Multiplatform
+#### [Coil](https://coil-kt.github.io/coil/compose/): Loading images from network.
+> Code implementation: [realization](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/compose/src/commonMain/kotlin/views/TipView.kt)
+> 
+> Dependencies: [gradle](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/compose/build.gradle.kts)
+> 
+> Lib overview: [link](https://proandroiddev.com/coil-for-compose-multiplatform-5745ea76356f)
+> 
   - [Desktop File Picker](https://github.com/Wavesonics/compose-multiplatform-file-picker)
   - [Image Picker](https://github.com/onseok/peekaboo): Image picker for Android/Ios
   - [Color Picker](https://github.com/eygraber/compose-color-picker): Cross-platform color picker
