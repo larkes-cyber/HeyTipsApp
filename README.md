@@ -20,5 +20,13 @@ Go to the [Releases](https://github.com/larkes-cyber/HeyTipsApp/releases/tag/pub
 - Image Picker/Internet Images
 - Multi-module/MVI
 - MVC ktor server
-  
+
+## Overview screencast
+https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-8229-09546190bbb8
+
+## [Admin overview](https://drive.google.com/file/d/1EE9t2STVpTXjqui5ElY9uj6weLOooZqR/view?usp=sharing)
+## [Desktop overview](https://drive.google.com/file/d/1MBCaQKwFDSDqJmL8322-t_sleTriB1GR/view?usp=sharing)
+
+
+
   
