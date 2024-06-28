@@ -106,9 +106,11 @@ The project includes 8 modules where: 1 composeApp, 3 features, 2 core, 1 umbrel
 The feature is to work with tips and contain common ui components
 
 ### Feature User
-The feature is to 
+The feature is represent app user side
 
 ### Feature Admin
+The feature is represent app admin side
+
 
 
   
