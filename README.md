@@ -103,7 +103,7 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
 The project includes 8 modules where: 1 composeApp, 3 features, 2 core, 1 umbrella, 1 utils.
 
 ### Tips
-The feature is to work with tips and contain common ui components. Included unit tests
+The feature is to work with tips and contain common ui components. [Unit tests included](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/tips/data/src/androidUnitTest/kotlin/TestTipsRepository.kt)
 
 ### Feature User
 The feature is  to represent app user side
