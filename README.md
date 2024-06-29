@@ -103,14 +103,18 @@ https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/c5a8d48d-8b56-46f8-82
 The project includes 8 modules where: 1 composeApp, 3 features, 2 core, 1 umbrella, 1 utils.
 
 ### Tips
-The feature is to work with tips and contain common ui components
+The feature is to work with tips and contain common ui components. Included unit tests
 
 ### Feature User
-The feature is represent app user side
+The feature is  to represent app user side
 
 ### Feature Admin
-The feature is represent app admin side
+The feature is to represent app admin side
 
+<img width="1048" alt="image" src="https://github.com/larkes-cyber/HeyTipsApp/assets/79082708/3baffd84-1336-4976-8c8d-eb4b5dc59744">
 
+## How to launch
+- Clone repository
+- 
 
   
