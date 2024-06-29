@@ -115,6 +115,8 @@ The feature is to represent app admin side
 
 ## How to launch
 - Clone repository
-- 
-
-  
+- Launch the server [https://github.com/larkes-cyber/HeyTipsBackend)
+- Paste your server url into SERVER_URL [link](https://github.com/larkes-cyber/HeyTipsApp/blob/release/common/core-utils/src/commonMain/kotlin/Constants.kt)
+- Launch android app from android studio, ios from xCode
+- Launch desktop app by entering in terminal **/.gradle run**
+- Enjoy the app!
